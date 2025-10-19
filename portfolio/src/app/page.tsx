@@ -230,7 +230,6 @@ export default function Page() {
                 >
                   debnath.mainak007@gmail.com
                 </a>
-                .
               </p>
 
             </div>

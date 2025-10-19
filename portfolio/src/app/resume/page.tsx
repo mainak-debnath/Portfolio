@@ -1,7 +1,6 @@
 // app/resume/page.tsx
 import BlurFade from "@/components/magicui/blur-fade";
 import PdfViewer from "@/components/PdfViewer";
-import { Download } from "lucide-react";
 
 export const metadata = {
     title: "Resume",
@@ -20,18 +19,19 @@ export default function ResumePage() {
             </div>
             <br></br>
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center max-w-md">
-                💡 Tip: Use the zoom controls for better readability or download the
-                PDF for offline viewing
+                💡 <span className="font-medium">Tip:</span> Use the zoom controls for better readability. <br />
+                🔗 <span className="font-medium">Note:</span> Links inside the resume are only clickable in the downloaded PDF version.
             </p>
 
-            <a
+
+            {/* <a
                 href="/resume.pdf"
                 download
                 className="mt-6 flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline transition-all"
             >
                 <Download className="w-4 h-4" />
                 Download Resume
-            </a>
+            </a> */}
         </section>
     );
 }
