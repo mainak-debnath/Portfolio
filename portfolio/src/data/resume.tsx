@@ -8,7 +8,7 @@ export const DATA = {
   location: "Kolkata, WB",
   locationLink: "https://www.google.com/maps/place/Bengaluru",
   description:
-    "Software Engineer. I love building things and solving complex tech challenges .",
+    "Software Engineer. I love building things and solving complex tech challenges.",
   summary:
     "I'm a software engineer at [MRI Software](/#work), where I get to build and improve products that make life easier for users. I graduated with a [B.Tech in Computer Science and Engineering](/#education) from St. Thomas' College of Engineering and Technology, where I picked up skills in coding, software development, and problem-solving. I work with tech like Angular, Django, and .NET to create products that are not just efficient but also user-friendly. I’m always excited to learn new things and take on projects where I can make a real impact.",
   avatarUrl: "/pic.png",
