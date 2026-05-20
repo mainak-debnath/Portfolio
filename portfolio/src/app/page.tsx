@@ -90,7 +90,7 @@ export default function Page() {
                       title={pos.title}
                       subtitle={work.location}
                       period={`${pos.start} - ${pos.end}`}
-                      description={pos.description as string[]}
+                      description={pos.description}
                     />
                   </BlurFade>
                 ))}
