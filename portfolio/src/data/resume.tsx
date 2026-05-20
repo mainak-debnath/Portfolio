@@ -1,34 +1,37 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { BookOpen, FileText, HomeIcon } from "lucide-react";
 
 export const DATA = {
   name: "Mainak Debnath",
   initials: "MD",
-  url: "https://dillion.io",
-  location: "Kolkata, WB",
-  locationLink: "https://www.google.com/maps/place/Bengaluru",
+  url: "https://mainak-debnath.dev",
+  location: "Bengaluru, India",
+  locationLink: "https://www.google.com/maps/place/Kolkata",
   description:
-    "Software Engineer. I love building things and solving complex tech challenges.",
+    "Software engineer focused on building reliable products, polished user experiences, and practical AI-powered tools.",
   summary:
-    "I'm a software engineer at [MRI Software](/#work), where I get to build and improve products that make life easier for users. I graduated with a [B.Tech in Computer Science and Engineering](/#education) from St. Thomas' College of Engineering and Technology, where I picked up skills in coding, software development, and problem-solving. I work with tech like Angular, Django, and .NET to create products that are not just efficient but also user-friendly. I’m always excited to learn new things and take on projects where I can make a real impact.",
+    "I'm a software engineer at [MRI Software](/#work), where I build and improve products used in the affordable housing space. My work spans responsive Angular frontends, backend services, performance tuning, and shipping features that reduce friction for real users. I graduated with a [B.Tech in Computer Science and Engineering](/#education) from St. Thomas' College of Engineering and Technology, and I enjoy working across the stack with technologies like Angular, Django, Python, and .NET. Outside of product engineering, I like exploring machine learning concepts and turning ideas into practical side projects.",
   avatarUrl: "/pic.png",
   skills: [
-    "Typescript",
+    "TypeScript",
     "Angular",
     "Python",
     "C#",
-    ".Net",
-    "Sql",
+    ".NET Core",
+    "SQL",
     "Machine Learning",
     "Django",
-    "Flask",
     "C++",
-    "Git"
+    "Git",
+    "REST APIs",
+    "Redis",
+    "LLMs",
+    "Agentic AI"
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    //{ href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "/resume", icon: NotebookIcon, label: "Resume" },
+    { href: "/blog", icon: BookOpen, label: "Blog" },
+    { href: "/resume", icon: FileText, label: "Resume" },
   ],
   contact: {
     email: "debnath.mainak007@gmail.com",
@@ -38,66 +41,58 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/mainak-debnath",
         icon: Icons.github,
-
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/mainak-debnath-58aa47187/",
         icon: Icons.linkedin,
-
         navbar: true,
       },
       X: {
         name: "X",
         url: "https://x.com/MainakDebnath07",
         icon: Icons.x,
-
         navbar: true,
       },
       email: {
         name: "Send Email",
         url: "mailto:debnath.mainak007@gmail.com",
         icon: Icons.email,
-
         navbar: true,
       },
     },
   },
-
   work: [
     {
       company: "MRI Software",
       href: "https://www.mrisoftware.com/",
       badges: [],
       location: "Bengaluru, India",
-      //title: "Software Engineer 1",
       logoUrl: "/mri_logo.jpg",
-      //start: "August 2022",
-      //end: "Present",
       positions: [
         {
           title: "Software Engineer 2",
           start: "February 2025",
           end: "Present",
           description: [
-            "Integrated SecureSign (e-signature) into Affordable Housing product, eliminating manual paperwork.",
-            "Improved document turnaround by 70% by streamlining signature workflows.",
-            "Collaborated with product and infra teams to ensure stable rollout and post-deployment monitoring."
-          ]
+            "Integrated SecureSign into the Affordable Housing product to reduce manual paperwork and streamline e-signature flows.",
+            "Improved document turnaround by 70% by simplifying signature workflows across the product experience.",
+            "Partnered with product and infrastructure teams to deliver a stable rollout with reliable post-deployment monitoring.",
+          ],
         },
         {
           title: "Software Engineer 1",
           start: "August 2022",
           end: "January 2025",
           description: [
-            "Developed responsive Angular UIs for Affordable Housing platform, improving user experience.",
-            "Reduced load time by 30% with lazy loading and pagination.",
-            "Enhanced API performance by 15% through optimized backend logic and SQL queries."
-          ]
-        }
-      ]
-    }
+            "Built responsive Angular interfaces for the Affordable Housing platform with a focus on usability and maintainability.",
+            "Reduced load time by 30% through lazy loading, pagination, and targeted frontend performance improvements.",
+            "Improved backend and SQL performance by 15% through optimized API logic and query tuning.",
+          ],
+        },
+      ],
+    },
   ],
   education: [
     {
@@ -107,7 +102,7 @@ export const DATA = {
       logoUrl: "/STCET-Logo.png",
       start: "2018",
       end: "2022",
-    }
+    },
   ],
   projects: [
     {
@@ -116,15 +111,15 @@ export const DATA = {
       dates: "April 2025 - June 2025",
       active: true,
       description:
-        "IntelliBlogger is a full-stack web app that uses AI to convert YouTube videos into structured blog posts. It supports user authentication, secure API access, and intelligent content generation.",
+        "A full-stack web app that turns YouTube videos into structured blog posts with authentication, secure API access, and AI-assisted content generation.",
       technologies: [
-        "Html",
+        "HTML",
         "CSS",
         "Angular",
         "Python",
         "Django",
         "Redis",
-        "Gemini LLM"
+        "Gemini LLM",
       ],
       links: [
         {
@@ -142,13 +137,13 @@ export const DATA = {
       dates: "June 2025",
       active: true,
       description:
-        "ReviewPal is an AI-driven pull request reviewer that automates code reviews on GitHub by analyzing PR diffs and posting precise, actionable inline comments based on customizable coding standards. Works with any language—just plug in your own standards.",
+        "An AI-driven pull request reviewer that analyzes GitHub PR diffs and posts precise inline comments based on customizable engineering standards.",
       technologies: [
         "Python",
-        "Langchain",
+        "LangChain",
         "Gemini LLM",
         "HTTPX",
-        "Github actions",
+        "GitHub Actions",
       ],
       links: [
         {
@@ -166,10 +161,8 @@ export const DATA = {
       dates: "Jul 2025",
       active: true,
       description:
-        "Developed a Python package for performing 2D geometric transformations (translation, scaling, rotation, shearing, reflection) on points and polygons using an object-oriented and immutable design.",
-      technologies: [
-        "Python",
-      ],
+        "A Python package for 2D geometric transformations on points and polygons, designed with an object-oriented and immutable API.",
+      technologies: ["Python"],
       links: [
         {
           type: "Source",
@@ -178,8 +171,7 @@ export const DATA = {
         },
       ],
       image: "/transformation.png",
-      video:
-        "",
+      video: "",
     },
     {
       title: "Personalise",
@@ -187,15 +179,15 @@ export const DATA = {
       dates: "Sept 2021",
       active: true,
       description:
-        "An application where user can write a piece of text and get to know about their Myers–Briggs Type Indicator",
+        "A text analysis application that predicts a user's Myers-Briggs personality type from written input.",
       technologies: [
-        "Html",
+        "HTML",
         "CSS",
         "Python",
         "Flask",
         "NLP",
         "Machine Learning",
-        "Git"
+        "Git",
       ],
       links: [
         {
@@ -206,6 +198,6 @@ export const DATA = {
       ],
       image: "/personalise.png",
       video: "",
-    }
-  ]
+    },
+  ],
 } as const;

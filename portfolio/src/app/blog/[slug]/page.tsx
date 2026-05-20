@@ -1,9 +1,10 @@
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -17,15 +18,21 @@ export async function generateMetadata({
     slug: string;
   };
 }): Promise<Metadata | undefined> {
-  let post = await getPost(params.slug);
+  const post = await getPost(params.slug);
 
-  let {
+  if (!post) {
+    return undefined;
+  }
+
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
   } = post.metadata;
-  let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
+  const ogImage = image
+    ? `${DATA.url}${image}`
+    : `${DATA.url}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -36,11 +43,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime,
       url: `${DATA.url}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -58,14 +61,14 @@ export default async function Blog({
     slug: string;
   };
 }) {
-  let post = await getPost(params.slug);
+  const post = await getPost(params.slug);
 
   if (!post) {
     notFound();
   }
 
   return (
-    <section id="blog">
+    <section id="blog" className="space-y-8 pb-16">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -79,29 +82,48 @@ export default async function Blog({
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${DATA.url}${post.metadata.image}`
-              : `${DATA.url}/og?title=${post.metadata.title}`,
+              : `${DATA.url}/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${DATA.url}/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: DATA.name,
             },
-          } as const)
+          } as const),
         }}
       />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
+
+      <div className="space-y-5 rounded-[2rem] border bg-card/80 p-6 shadow-sm backdrop-blur sm:p-8">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        >
+          <ArrowLeft className="size-4" />
+          Back to blog
+        </Link>
+        <div className="space-y-3">
+          <div className="inline-flex rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
+            Technical Writing
+          </div>
+          <h1 className="max-w-[720px] text-3xl font-bold tracking-tighter sm:text-5xl">
+            {post.metadata.title}
+          </h1>
+          <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
+            {post.metadata.summary}
           </p>
-        </Suspense>
+        </div>
+        <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <span>{formatDate(post.metadata.publishedAt)}</span>
+          <span className="hidden h-1 w-1 rounded-full bg-muted-foreground/70 sm:inline-block" />
+          <span>By {DATA.name}</span>
+        </div>
       </div>
-      <article
-        className="prose dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: post.source }}
-      ></article>
+
+      <div className="rounded-[2rem] border bg-card/85 p-6 shadow-sm backdrop-blur sm:p-10">
+        <article
+          className="prose prose-lg prose-neutral max-w-none text-pretty dark:prose-invert prose-headings:scroll-mt-24 prose-a:no-underline hover:prose-a:underline"
+          dangerouslySetInnerHTML={{ __html: post.source }}
+        />
+      </div>
     </section>
   );
 }

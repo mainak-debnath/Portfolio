@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   let headers = data.headers.map((header, index) => (
@@ -39,7 +40,17 @@ function CustomLink(props: any) {
     return <a {...props} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+      className="inline-flex items-center gap-1"
+    >
+      <span>{props.children}</span>
+      <ArrowUpRight className="size-3.5 shrink-0 opacity-70" />
+    </a>
+  );
 }
 
 function RoundedImage(props: any) {

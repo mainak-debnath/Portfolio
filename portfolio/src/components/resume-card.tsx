@@ -32,15 +32,15 @@ export const ResumeCard = ({
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
-    if (href) e.preventDefault();
+    if (href && description) e.preventDefault();
     if (description) setIsExpanded((prev) => !prev);
   };
 
   const CardContent = (
-    <Card className="flex">
+    <Card className="flex border-border/60 bg-background/45 shadow-none backdrop-blur-sm transition-colors group-hover:border-border">
       {logoUrl && altText && (
         <div className="flex-none">
-          <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
+          <Avatar className="m-auto size-12 border bg-background">
             <AvatarImage
               src={logoUrl}
               alt={altText}
@@ -95,10 +95,10 @@ export const ResumeCard = ({
               height: isExpanded ? "auto" : 0,
             }}
             transition={{
-              duration: 0.7,
+              duration: 0.35,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mt-2 text-base sm:text-l"
+            className="mt-2 text-base text-muted-foreground sm:text-l"
           >
             {Array.isArray(description) ? (
               <ul className="list-disc pl-5">
@@ -132,4 +132,3 @@ export const ResumeCard = ({
     </div>
   );
 };
-

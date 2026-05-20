@@ -35,7 +35,12 @@ export async function markdownToHTML(markdown: string) {
     .use(rehypeStringify)
     .process(markdown);
 
-  return p.toString();
+  return p
+    .toString()
+    .replace(
+      /<a href="(https?:\/\/[^"]+)">/g,
+      '<a href="$1" class="external-link" target="_blank" rel="noopener noreferrer">'
+    );
 }
 
 export async function getPost(slug: string) {
