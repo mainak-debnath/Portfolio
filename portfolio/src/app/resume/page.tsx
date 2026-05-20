@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <section className="flex flex-col items-center px-4 pt-8">
+    <section className="flex flex-col items-center px-4 pb-28 pt-8 sm:pb-12">
       <BlurFade delay={0.05}>
         <h1 className="mb-6 text-3xl font-bold">My Resume</h1>
       </BlurFade>
