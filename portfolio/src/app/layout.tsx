@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
@@ -42,10 +43,6 @@ export const metadata: Metadata = {
     title: `${DATA.name}`,
     card: "summary_large_image",
   },
-  verification: {
-    google: "",
-    yandex: "",
-  },
 };
 
 export default function RootLayout({
@@ -57,12 +54,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          "mx-auto min-h-screen max-w-3xl bg-background px-6 py-10 font-sans antialiased sm:py-16",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
+            <SiteHeader />
             {children}
             <Navbar />
           </TooltipProvider>
